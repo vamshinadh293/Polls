@@ -1,4 +1,3 @@
-
 /* === Global Reset === */
 * {
   margin: 0;
@@ -7,44 +6,33 @@
 }
 
 :root {
-  --brand-primary: #4f46e5; /* Indigo (Figma accent) */
-  --brand-accent: #6366f1;
-  --brand-bg: #f9fafb;
-  --brand-card: #ffffff;
-  --text-main: #111827;
-  --text-secondary: #6b7280;
-  --border-light: #e5e7eb;
-  --danger: #ef4444;
-  --success: #22c55e;
+  --primary: #6c63ff; /* main purple accent */
+  --primary-hover: #5a54e8;
+  --border: #e5e7eb;
+  --bg: #fafafa;
+  --text-dark: #111827;
+  --text-muted: #6b7280;
+  --white: #ffffff;
+  --error: #ef4444;
   --radius: 10px;
-  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
-/* === Base Typography === */
+/* === Base Styles === */
 body {
-  font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  background: var(--brand-bg);
-  color: var(--text-main);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text-dark);
   line-height: 1.5;
-}
-
-a {
-  text-decoration: none;
-  color: var(--brand-primary);
-}
-
-h1, h2, h3, h4 {
-  font-weight: 600;
-  color: var(--text-main);
 }
 
 /* === App Layout === */
 .app {
-  max-width: 960px;
-  margin: 30px auto;
-  background: var(--brand-card);
+  max-width: 900px;
+  margin: 40px auto;
+  background: var(--white);
   border-radius: var(--radius);
-  box-shadow: var(--shadow-soft);
+  box-shadow: var(--shadow);
   overflow: hidden;
 }
 
@@ -54,72 +42,137 @@ h1, h2, h3, h4 {
   justify-content: space-between;
   align-items: center;
   padding: 16px 24px;
-  background: var(--brand-primary);
-  color: #fff;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
 }
 
 .header h1 {
   font-size: 20px;
   font-weight: 600;
-  letter-spacing: 0.3px;
+  color: var(--primary);
 }
 
 .header nav a {
-  color: #fff;
+  margin-left: 20px;
+  color: var(--primary);
   font-weight: 500;
-  margin-left: 16px;
-  transition: opacity 0.2s;
+  transition: color 0.2s;
 }
 
 .header nav a:hover {
-  opacity: 0.8;
+  color: var(--primary-hover);
 }
 
-/* === Page Containers === */
+/* === Page Container === */
 main {
-  padding: 24px 32px;
+  padding: 40px 32px;
 }
 
+/* === Welcome Screen === */
+.welcome-card {
+  text-align: center;
+  background: var(--white);
+  padding: 60px 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.welcome-card h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.welcome-card p {
+  color: var(--text-muted);
+  margin-bottom: 30px;
+  font-size: 15px;
+}
+
+.role-selection {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.role-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 24px;
+  width: 200px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.role-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15);
+}
+
+.role-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.role-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+button.primary {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 32px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button.primary:hover {
+  background: var(--primary-hover);
+}
+
+/* === Teacher Dashboard === */
 .teacher-page h2,
 .student-page h2 {
-  margin-bottom: 16px;
   font-size: 22px;
-}
-
-/* === Forms === */
-.poll-form,
-.join-form {
-  background: var(--brand-card);
-  padding: 20px;
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-soft);
+  font-weight: 600;
   margin-bottom: 24px;
 }
 
-.poll-form label,
-.join-form label {
-  display: block;
-  margin-bottom: 8px;
+.poll-form {
+  background: var(--white);
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+
+.poll-form label {
   font-weight: 500;
-  color: var(--text-secondary);
+  font-size: 14px;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 6px;
 }
 
 .poll-form input,
-.poll-form textarea,
-.join-form input {
+.poll-form textarea {
   width: 100%;
   padding: 10px 12px;
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
-  font-size: 15px;
   margin-bottom: 16px;
+  font-size: 15px;
 }
 
-.poll-form button,
-.join-form button,
-button {
-  background: var(--brand-primary);
+.poll-form button {
+  background: var(--primary);
   color: white;
   border: none;
   border-radius: var(--radius);
@@ -129,19 +182,53 @@ button {
   transition: background 0.2s;
 }
 
-button:hover {
-  background: var(--brand-accent);
+.poll-form button:hover {
+  background: var(--primary-hover);
+}
+
+/* === Poll Question === */
+.poll-area {
+  background: var(--white);
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.poll-area h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* === Poll Options === */
+.option {
+  background: #f9fafb;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.option input {
+  margin-right: 10px;
+}
+
+.option:hover {
+  border-color: var(--primary);
+  background: #f0f2ff;
+}
+
+.option.selected {
+  border-color: var(--primary);
+  background: #e0e7ff;
 }
 
 /* === Poll Results === */
-.poll-area {
-  background: var(--brand-card);
-  padding: 20px;
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-soft);
-}
-
 .results {
   margin-top: 12px;
 }
@@ -154,9 +241,9 @@ button:hover {
 }
 
 .result-label {
-  width: 120px;
+  width: 140px;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: var(--text-muted);
 }
 
 .result-bar {
@@ -170,75 +257,96 @@ button:hover {
 
 .result-fill {
   height: 100%;
-  background: var(--brand-primary);
+  background: var(--primary);
   transition: width 0.4s ease-in-out;
 }
 
 .result-meta {
-  width: 60px;
+  width: 50px;
   text-align: right;
-  font-size: 14px;
-  color: var(--text-secondary);
+  font-size: 13px;
+  color: var(--text-muted);
 }
 
-/* === Poll Options === */
-.option {
-  display: block;
-  background: #f3f4f6;
-  padding: 10px 14px;
-  border-radius: var(--radius);
-  border: 1px solid var(--border-light);
-  margin-bottom: 10px;
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-
-.option:hover {
-  background: #eef2ff;
-  border-color: var(--brand-accent);
-}
-
-.option.selected {
-  border-color: var(--brand-primary);
-  background: #e0e7ff;
-}
-
-/* === Timer Bar === */
+/* === Timer === */
 .timer {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin: 10px 0 16px;
+  margin: 12px 0 18px;
 }
 
 .timer-bar {
   flex: 1;
-  height: 12px;
+  height: 10px;
   background: #e5e7eb;
-  border-radius: 6px;
+  border-radius: 5px;
   overflow: hidden;
-  position: relative;
 }
 
 .timer-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--success), var(--brand-accent));
+  background: var(--error);
   transition: width 0.4s linear;
 }
 
 .timer-text {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-secondary);
   width: 50px;
+  text-align: right;
+  font-size: 14px;
+  color: var(--error);
+  font-weight: 600;
 }
 
-/* === Utility === */
-.text-center { text-align: center; }
-.mt-20 { margin-top: 20px; }
+/* === Chat Button (bottom right) === */
+.chat-button {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--primary);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: background 0.2s;
+}
 
-@media (max-width: 600px) {
-  main { padding: 16px; }
-  .header { flex-direction: column; gap: 8px; }
-  .result-label { width: 100px; }
+.chat-button:hover {
+  background: var(--primary-hover);
+}
+
+/* === Utilities === */
+.text-center {
+  text-align: center;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  main {
+    padding: 20px;
+  }
+
+  .role-selection {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .poll-form, .poll-area {
+    padding: 16px;
+  }
 }
